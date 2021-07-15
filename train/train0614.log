@@ -1,0 +1,7 @@
+loading annotations into memory...
+Done (t=27.01s)
+creating index...
+index created!
+[Epoch 0000 TRAIN 46667.1 seconds] Loss: 4.0028e+00 bpp: 6.0000e-01 mse: 1.1751e+02 aux: 0.0000e+00
+[INFO] Saving
+[Epoch 0001 TRAIN 43124.9 seconds] Loss: 3.6080e+00 bpp: 5.5430e-01 mse: 7.1521e+01 aux: 0.0000e+00
