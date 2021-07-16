@@ -4,7 +4,7 @@
 
 trainval 和 annotation
 
-需要安装的包在文件requirement.txt中
+需要安装的包在文件```../requirement.txt```中
 
 ### Command
 
