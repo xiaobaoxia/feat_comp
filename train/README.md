@@ -1,4 +1,7 @@
 ### Data
+预训练参数地址 https://drive.google.com/drive/folders/1QL9lpEeTgzJMCEZ2m-9gOxGr6TChB2PU
+
+需要下载预训练参数到```../model/```文件夹，使用model QP1-7
 
 需要下载COCO2017数据集到配置中的路径
 
