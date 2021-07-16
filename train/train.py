@@ -394,7 +394,7 @@ def main():
     logger_val.set_names(['Epoch', 'Val Bpp','Val Bpp1','Val Bpp2','Val Bpp3', 'Val MSE','Val PSNR'])
     logger_result.set_names(['Epoch', 'APbb', 'APbb50', 'APbb75', 'APbbs', 'APbbm', 'APbbl', 'AP', 'AP50', 'AP75', 'APs', 'APm', 'APl'])
     val_acc = 0
-    for epoch in range(st_epoch, 100):
+    for epoch in range(st_epoch, 50):
         start_time = time.time()
         list_train_loss = 0.
         list_train_bpp = 0.
