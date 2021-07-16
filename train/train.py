@@ -362,7 +362,7 @@ def main():
     else:
         net = Net_low(lmbda,(args.batchsize // n_parallel, 256, 256, 3),
                       (args.batchsize // n_parallel, 256, 256, 3),args.qp)
-    if args.load_weights:
+    if bool(args.load_weights):
         sd = net.state_dict()
         with open('../model/model0_qp%d.pk'%args.qp, 'rb') as f:
             tf_d_0 = pickle.load(f)
@@ -487,7 +487,7 @@ if __name__ == "__main__":
         "--checkpoint_dir", default="train",
         help="Directory where to save/load model checkpoints.")
     parser.add_argument(
-        "--batchsize", type=int, default=20,
+        "--batchsize", type=int, default=18,
         help="Batch size for training.")
     parser.add_argument(
         '--gpu', default='0,3', type=str, help='gpu id')
@@ -498,7 +498,7 @@ if __name__ == "__main__":
         "--qp", type=int, default=3,
         help="quantization parameter")
     parser.add_argument(
-        "--num_workers", type=int, default=10,
+        "--num_workers", type=int, default=16,
         help="num workers for data loading.")
     parser.add_argument(
         "--patchsize", type=int, default=256,
@@ -511,7 +511,7 @@ if __name__ == "__main__":
         help="Number of CPU threads to use for parallel decoding of training "
              "images.")
     parser.add_argument(
-        "--load_weights", default=True,
+        "--load_weights", default=1,
         help="Loaded weights")
 
     args = parser.parse_args()
