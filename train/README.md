@@ -1,17 +1,27 @@
-## Train a Coarse-to-Fine Compression Model
-
 ### Data
-We use DIV2K as the training data. All 800 images are included. Besides, we down-sampled all images to half of their sizes and build a training set with 1600 images.
 
-You may place the 1600 PNG files in a directory, assumed to be named ```IMAGE_PATH```.
+需要下载COCO2017数据集到配置中的路径
+
+trainval 和 annotation
+
+需要安装的包在文件requirement.txt中
 
 ### Command
-An example command to train the network with 2 GPUs is as follows,
 
-```CUDA_VISIBLE_DEVICES=0,1 python train.py train --batchsize 16 --train_glob "IMAGE_PATH/*.png" --checkpoint_dir checkpoint --lambda 0.004```
+两张卡训练网络 不加载预训练参数
 
-You may use different numbers of GPUs. Please modify ```n_parallel``` in the code if you use a different number of GPUs.
+```shell
+python train.py --batchsize 16 --gpu "0,1" --gpu_count 2 --num_workers 16 --qp 7 --load_weights 0
+```
 
-The training checkpoints will be saved in ```checkpoint``` as set.
+以下是测试使用的训练参数
 
-Note that this is an experimental implementation of the training procedure with PyTorch. The code would train the model from scratch (without pretraining) and the resulting models would even achieve better R-D performance than released in the paper. If you encounter any problem, please feel free to contact me.
+如果想要提升训练速度，需要增加GPU数量和batchsize，并且gpu_count需要同时修改为使用的GPU数量
+
+通过QP参数加载不同的预训练参数和 lambda
+
+num_workers是加载训练数据使用的进程数量，增加workers也可以在一定程度上增加训练速度，但是会消耗内存，CPU，GPU。所以num_workers不能太高，需要权衡
+
+learning_rate 目前看来设置为默认值效果最好
+
+训练的模型存放在```train```中
