@@ -32,6 +32,22 @@ from dataset_load_utils.coco_utils import get_coco_api_from_dataset,convert_to_c
 from torch.autograd import Variable
 import pickle
 
+def unnorm(img):
+    mean = [0.485, 0.456, 0.406]
+    std = [0.229, 0.224, 0.225]
+    dtype = img.dtype
+    mean = torch.as_tensor(mean, dtype=dtype, device=img.device)
+    std = torch.as_tensor(std, dtype=dtype, device=img.device)
+    if mean.ndim == 1:
+        mean = mean.view(-1, 1, 1)
+    if std.ndim == 1:
+        std = std.view(-1, 1, 1)
+    for i in range(len(img)):
+        image = img[i]
+        image.mul_(std).add_(mean)
+        img[i] = image
+    return img
+
 # Main analysis transform model with GDN
 class analysisTransformModel(nn.Module):
     def __init__(self, in_dim, num_filters, conv_trainable=True):
