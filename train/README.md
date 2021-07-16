@@ -3,9 +3,9 @@
 
 需要下载预训练参数到```../model/```文件夹，使用model QP1-7
 
-需要下载COCO2017数据集到配置中的路径
-
-trainval 和 annotation
+需要下载COCO2017数据集到配置中的路径 ```../../../coco_dataset```
+可以只下载 trainval 和 annotation 数据集目录结构如下
+![image](https://user-images.githubusercontent.com/33535066/125921637-6ca07c80-1d71-4559-95d6-cc834386fbf8.png)
 
 需要安装的包在文件```../requirement.txt```中
 
@@ -14,7 +14,7 @@ trainval 和 annotation
 两张卡训练网络 不加载预训练参数
 
 ```shell
-python train.py --batchsize 16 --gpu "0,1" --gpu_count 2 --num_workers 16 --qp 7 --load_weights 0
+python train.py --batchsize 16 --gpu "0,1" --gpu_count 2 --num_workers 16 --qp 7 --load_weights 0 --coco_root ../../../coco_dataset
 ```
 
 以下是测试使用的训练参数
