@@ -493,7 +493,7 @@ if __name__ == "__main__":
         help="Number of CPU threads to use for parallel decoding of training "
              "images.")
     parser.add_argument(
-        "--load_weights", default=1,
+        "--load_weights", default=0,
         help="Loaded weights")
 
     args = parser.parse_args()
